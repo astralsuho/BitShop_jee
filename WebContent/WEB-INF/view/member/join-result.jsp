@@ -10,6 +10,13 @@ String month = "";
 String day = "";
 String gender = "";
 String bmi = "";
+
+switch(gender){
+case "a" :
+	
+	break;
+}
+
 %>   
 <!DOCTYPE html>
 <html>
