@@ -9,22 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.Command;
+
 @WebServlet("/account.do")
 public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("===account 로 진입===");
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/account/main.jsp");
-		rd.forward(request, response);
+		System.out.println("+++ 어카운트 서블릿으로 들어옴 +++");
+		String action = request.getParameter("action");
+		switch((action == null) ? "move": action) {
+		case "move":
+			System.out.println("액션이 이동");
+			Command.move(request, response, "member/main");
+			break;
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

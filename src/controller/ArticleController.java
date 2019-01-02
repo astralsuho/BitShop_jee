@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.Command;
+
 /**
  * Servlet implementation class ArticleController
  */
@@ -17,7 +19,14 @@ public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/article/main.jsp");
+		System.out.println("+++ 게시판 서블릿으로 들어옴 +++");
+		String action = request.getParameter("action");
+		switch((action == null) ? "move": action) {
+		case "move":
+			System.out.println("액션이 이동");
+			Command.move(request, response, "article/main");
+			break;
+		}
 	}
 
 	
