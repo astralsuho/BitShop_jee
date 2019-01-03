@@ -44,7 +44,6 @@
 									tabindex="2" /> 
 								<input type="hidden" name="cmd" value="login" /> 
 								<input type="hidden" name="dir" value="home" /> 
-								<input type="hidden" name="page" value="main" />
 							</td>
 						</tr>
 					</table>
