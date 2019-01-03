@@ -17,13 +17,15 @@ public class MemberController extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(" 멤버서블릿으로 들어옴!!");
-		String action = request.getParameter("action");
+		String action = request.getParameter("cmd");
 		switch((action == null) ? "move": action) {
 		case "login":
 			String id = request.getParameter("id");
 			String pass = request.getParameter("pass");
+			String dir = request.getParameter("dir");
+			String page = request.getParameter("page");
 			if(id.equals("test") && pass.equals("test")) {
-				Command.move(request, response, "home/main");
+				Command.move(request, response, dir+"/"+page);
 			}else {
 				Command.move(request, response, "index");
 			}

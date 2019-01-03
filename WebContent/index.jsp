@@ -28,10 +28,10 @@
 	<table id="login-outer-tab">
 		<tr>
 			<td colspan="5">
-				<form id="login-form" action="user.do">
+				<form id="login-form" action="member.do">
 					<table id="login-inner-tab">
 						<tr>
-							<td><input id="userid-input" name="userid-input"
+							<td><input id="userid-input" name="id"
 								type="text" value="test" placeholder="ID" tabindex="1" />
 							</td>
 							<td rowspan="2">
@@ -39,11 +39,11 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input id="password-input" name="password-input"
-									type="password" value="lee" placeholder="PASSWORD"
+							<td><input id="password-input" name="pass"
+									type="password" value="test" placeholder="PASSWORD"
 									tabindex="2" /> 
 								<input type="hidden" name="cmd" value="login" /> 
-								<input type="hidden" name="dir" value="bitcamp" /> 
+								<input type="hidden" name="dir" value="home" /> 
 								<input type="hidden" name="page" value="main" />
 							</td>
 						</tr>

@@ -5,15 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#wrapper{
+	width: 100%;
+	height: 100%;
+	border: 3px solid gray;
+}
+#wrapper tr{
+	border: 1px solid gray;
+}
+#wrapper tr td{
+	border: 1px solid gray;
+}
+</style>
 </head>
 <body>
-	<div>
-		<img src="<%=application.getContextPath() %>/resources/img/NYE-19-.jpg" alt="" />
-	</div>
-	<h1> 메 뉴 </h1>
-	<a href="member.do">회원관리</a>
-	<a href="account.do">계좌관리</a>
-	<a href="article.do">게시판</a>
-	<a href="admin.do">관리자</a>
+<table id="wrapper">
+	<tr>
+		<td colspan="2">
+			<h1>비트 쇼핑몰</h1>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<ul id="navi-bar">
+				<li>홈</li>
+				<li><a href="member.do">회원관리</a></li>
+				<li><a href="account.do">계좌관리</a></li>
+				<li><a href="article.do">게시판</a></li>
+				<li><a href="admin.do">관리자</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr  style="height: 300px">
+		<td></td>
+		<td></td>
+	</tr>
+</table>
 </body>
 </html>
