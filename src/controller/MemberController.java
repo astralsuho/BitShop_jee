@@ -40,6 +40,8 @@ public class MemberController extends HttpServlet {
 			}
 			System.out.println("(3)dir :"+dir);
 			System.out.println("(4)page :"+page);
+			request.setAttribute("name", "test");
+			request.setAttribute("compo", "login-success");
 			Command.move(request, response, dir,page);
 			break;
 		case "move":

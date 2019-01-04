@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="domain.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,13 @@
 		</td>
 		<td>
 			<div>
-				성공적으로 개설되었습니다. !!
+			<%
+			AccountBean acc = (AccountBean)request.getAttribute("acc");
+			String accNum = acc.getAccountNum();
+			%>
+				계좌 번호 :<%=accNum %>
+				잔 액 : ....
+				계좌 생성일 : ....
 			</div>
 		</td>
 	</tr>
