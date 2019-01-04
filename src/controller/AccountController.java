@@ -16,14 +16,25 @@ public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("+++ 어카운트 서블릿으로 들어옴 +++");
-		String action = request.getParameter("action");
+		System.out.println("(1)계좌 서블릿으로 들어옴!!");
+		String cmd = request.getParameter("cmd");
+		cmd = (cmd == null) ? "move": cmd;
+		System.out.println("(2)cmd :"+ cmd);
 		String dir = request.getParameter("dir");
+		if(dir == null) {
+			String sPath = request.getServletPath();
+			sPath = sPath.replace(".do", "");
+			dir = sPath.substring(1);
+		}
+		System.out.println("(3)dir :"+dir);
 		String page = request.getParameter("page");
-		switch((action == null) ? "move": action) {
+		if(page == null) {page = "main";}
+		System.out.println("(4)page :"+page);
+		
+		switch(cmd) {
 		case "move":
 			System.out.println("액션이 이동");
-			Command.move(request, response, "account/main");
+			Command.move(request, response, dir, page);
 			break;
 		}
 	}
