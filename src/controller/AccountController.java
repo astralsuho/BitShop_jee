@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +32,11 @@ public class AccountController extends HttpServlet {
 		switch(cmd) {
 		case "move":
 			System.out.println("액션이 이동");
+			Command.move(request, response, dir, page);
+			break;
+		case "open-account":
+			String money = request.getParameter("money");
+			System.out.println("계좌개설시 입금한 돈 ?"+money);
 			Command.move(request, response, dir, page);
 			break;
 		}

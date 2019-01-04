@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import pool.Constant;
 
 public class Command {
+	
 	public static void move(HttpServletRequest request, 
 			HttpServletResponse response,String dir,String page)throws ServletException, IOException{
 		
