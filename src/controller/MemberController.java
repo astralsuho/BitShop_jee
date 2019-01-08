@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import domain.MemberBean;
+import service.MemberService;
+import service.MemberServiceImpl;
 
 @WebServlet("/member.do")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		MemberService memberService = new MemberServiceImpl();
+		MemberBean member = null;
 		System.out.println("(1)멤버서블릿으로 들어옴!!");
 		String cmd = request.getParameter("cmd");
 		cmd = (cmd == null) ? "move": cmd;
@@ -45,7 +50,25 @@ public class MemberController extends HttpServlet {
 			Command.move(request, response, dir,page);
 			break;
 		case "move":
+			String dest = request.getParameter("dest");
+			if(dest == null) {
+				dest = "NONE";
+			}
+			request.setAttribute("dest", dest);
 			Command.move(request, response, dir,page);
+			break;
+		case "join":
+			member = new MemberBean();
+			id = request.getParameter("id");
+			member.setId(id);
+			String name = request.getParameter("name");
+			member.setName(name);
+			pass = request.getParameter("pass");
+			member.setPass(pass);
+			String ssn = request.getParameter("ssn");
+			member.setSsn(ssn);
+			memberService.joinMember(member);
+			request.setAttribute("dest", "mypage");
 			break;
 		}
 	}

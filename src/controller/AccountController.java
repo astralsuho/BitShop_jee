@@ -42,8 +42,8 @@ public class AccountController extends HttpServlet {
 		case "open-account":
 			String money = request.getParameter("money");
 			System.out.println("계좌개설시 입금한 돈 ?"+money);
-			String accNum = accountService.openAccount(Integer.parseInt(money));
-			AccountBean acc = accountService.findByAccountNum(accNum);
+			accountService.openAccount(Integer.parseInt(money));
+			AccountBean acc = accountService.findByAccountNum("");
 			request.setAttribute("acc", acc);
 			Command.move(request, response, dir, page);
 			break;
