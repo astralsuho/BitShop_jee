@@ -38,7 +38,7 @@
 			<%
 			dest = String.valueOf(request.getAttribute("dest"));
 			switch(dest){
-			case "NONE":
+			case "NONE": case "mypage":
 				%>
 				<%@ include file="mypage.jsp" %>
 				<%
@@ -48,14 +48,7 @@
 				<%@ include file="join-form.jsp" %>
 				<%
 				break;
-			case "mypage":
-				%>
-				<%@ include file="mypage.jsp" %>
-				<%
-				break;
-			
 			}
-			
 			%>
 			</td>
 		</tr>

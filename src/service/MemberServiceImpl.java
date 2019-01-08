@@ -2,60 +2,57 @@ package service;
 
 import java.util.ArrayList;
 
+import dao.MemberDAO;
+import dao.MemberDAOImpl;
 import domain.MemberBean;
 
 public class MemberServiceImpl implements MemberService{
-
+	private static MemberServiceImpl instance = new MemberServiceImpl();
+	private MemberServiceImpl() {}
+	public static MemberServiceImpl getInstance() {return instance;}
+	
 	@Override
 	public void joinMember(MemberBean member) {
-		System.out.println("멤버서비스 조인에 진입");
-		System.out.println("===컨트롤러에서 넘어온 회원정보===");
-		System.out.println("ID :"+member.getId());
-		System.out.println("이름 :"+member.getName());
-		System.out.println("비번 :"+member.getPass());
-		System.out.println("주민번호 :"+member.getSsn());
-		
+		MemberDAOImpl.getInstance().insertMember(member);
 	}
 
 	@Override
 	public ArrayList<MemberBean> listMembers() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<MemberBean> list = new ArrayList<>();
+		return list;
 	}
 
 	@Override
 	public ArrayList<MemberBean> findByName() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<MemberBean> list = new ArrayList<>();
+		return list;
 	}
 
 	@Override
-	public MemberBean findById() {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberBean findById(String id) {
+		MemberBean member = new MemberBean();
+		return member;
 	}
 
 	@Override
 	public int countMembers() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		return count;
 	}
 
 	@Override
 	public boolean existMember() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean exist = false;
+		return exist;
 	}
 
 	@Override
 	public void updateMember() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void deleteMember() {
-		// TODO Auto-generated method stub
 		
 	}
 

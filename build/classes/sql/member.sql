@@ -24,3 +24,9 @@ DROP TABLE member;
 -- 인스턴스 생성 == DB에서 한 row 를 추가하는것
 INSERT INTO member(id, name, pass, ssn)
 VALUES('hong', '홍길동', '1', '900101-1234567')
+
+SELECT * FROM member;
+
+
+
+
