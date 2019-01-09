@@ -16,20 +16,20 @@ public class MemberDAOImpl implements MemberDAO{
 	private static MemberDAOImpl instance = new MemberDAOImpl();
 	private MemberDAOImpl() {}
 	public static MemberDAOImpl getInstance() {return instance;	}
-	private Connection conn;
-	private Statement stmt;
-	private ResultSet rs;
+	
 	@Override
 	public void insertMember(MemberBean member) {
 		try {
 			DatabaseFactory
 			.createDatabase("oracle")
 			.getConnection()
-			.createStatement().executeUpdate(String.format(
+			.createStatement()
+			.executeUpdate(String.format(
 					"INSERT INTO member(id, name, pass, ssn) \n"
 					+ "VALUES('%s', '%s', '%s', '%s')",
 					member.getId(),member.getName(),
 					member.getPass(), member.getSsn()));
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,7 +46,13 @@ public class MemberDAOImpl implements MemberDAO{
 	public ArrayList<MemberBean> selectMembersByName(String name) {
 		ArrayList<MemberBean> list = new ArrayList<>();
 		try {
-			Class.forName("");
+			ResultSet rs = DatabaseFactory
+					.createDatabase("oracle")
+					.getConnection()
+					.createStatement()
+					.executeQuery(name);
+			while(rs.next()) {
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
