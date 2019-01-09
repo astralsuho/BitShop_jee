@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnTest {
+	public static String test() {
+		return "1";
+	}
 
 	public static void main(String[] args) {
+		String a = test();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;

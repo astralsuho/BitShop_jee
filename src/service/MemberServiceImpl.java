@@ -7,30 +7,37 @@ import dao.MemberDAOImpl;
 import domain.MemberBean;
 
 public class MemberServiceImpl implements MemberService{
+	
 	private static MemberServiceImpl instance = new MemberServiceImpl();
-	private MemberServiceImpl() {}
+	private MemberServiceImpl() {
+		dao = MemberDAOImpl.getInstance();
+	}
 	public static MemberServiceImpl getInstance() {return instance;}
 	
+	MemberDAOImpl dao;
+	
 	@Override
-	public void joinMember(MemberBean member) {
-		MemberDAOImpl.getInstance().insertMember(member);
+	public void createMember(MemberBean member) {
+		dao.insertMember(member);
+		
 	}
 
 	@Override
-	public ArrayList<MemberBean> listMembers() {
+	public ArrayList<MemberBean> findAllMembers() {
 		ArrayList<MemberBean> list = new ArrayList<>();
 		return list;
 	}
 
 	@Override
-	public ArrayList<MemberBean> findByName() {
+	public ArrayList<MemberBean> findMembersByName(String name) {
 		ArrayList<MemberBean> list = new ArrayList<>();
 		return list;
 	}
 
 	@Override
-	public MemberBean findById(String id) {
-		MemberBean member = new MemberBean();
+	public MemberBean findMemberById(String id) {
+		MemberBean member = new MesmberBean();
+		member = dao.selectMemberById(id);
 		return member;
 	}
 
@@ -41,18 +48,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean existMember() {
+	public boolean existMember(String id, String pass) {
 		boolean exist = false;
 		return exist;
 	}
 
 	@Override
-	public void updateMember() {
+	public void changeMember(MemberBean member) {
 		
 	}
 
 	@Override
-	public void deleteMember() {
+	public void removeMember(String id) {
 		
 	}
 

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import domain.MemberBean;
 
 public interface MemberService {
-	public void joinMember(MemberBean member);
-	public ArrayList<MemberBean> listMembers();
-	public ArrayList<MemberBean> findByName();
-	public MemberBean findById(String id);
+	public void createMember(MemberBean member);
+	public ArrayList<MemberBean> findAllMembers();
+	public ArrayList<MemberBean> findMembersByName(String name);
+	public MemberBean findMemberById(String id);
 	public int countMembers();
-	public boolean existMember();
-	public void updateMember();
-	public void deleteMember();
+	public boolean existMember(String id, String pass);
+	public void changeMember(MemberBean member);
+	public void removeMember(String id);
 }

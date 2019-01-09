@@ -38,46 +38,72 @@ public class MemberDAOImpl implements MemberDAO{
 				System.out.println("회원가입 실패 !!");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		
 	}
 
 	@Override
-	public ArrayList<MemberBean> selectMembers() {
+	public ArrayList<MemberBean> selectAllMembers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<MemberBean> selectByName() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<MemberBean> selectMembersByName(String name) {
+		ArrayList<MemberBean> list = new ArrayList<>();
+		try {
+			Class.forName("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
-	public MemberBean selectById() {
-		MemberDAO dao = new MemberDAOImpl();
-		dao.selectById();
-		return null;
+	public MemberBean selectMemberById(String id) {
+		MemberBean member = new MemberBean();
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return member;
 	}
 
 	@Override
 	public int countMembers() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count  = 0;
+		try {
+			Class.forName("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 	@Override
-	public void updateMember() {
-		// TODO Auto-generated method stub
+	public void updateMember(MemberBean member) {
+		try {
+			Class.forName("");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
-	public void deleteMember() {
-		// TODO Auto-generated method stub
+	public void deleteMember(String id) {
+		try {
+			Class.forName("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
