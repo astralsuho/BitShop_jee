@@ -8,11 +8,14 @@ import java.util.Random;
 import domain.AccountBean;
 
 public class AccountServiceImpl implements AccountService{
-	private ArrayList<AccountBean> list;
+	private static AccountServiceImpl instance = new AccountServiceImpl(); 
+	private AccountServiceImpl() {}
+	public static AccountServiceImpl getInstance() {return instance;}
 
-	public AccountServiceImpl() {
-		list = new ArrayList<>();
-	}
+
+
+
+
 
 	@Override
 	public void openAccount(int money) {
@@ -20,7 +23,7 @@ public class AccountServiceImpl implements AccountService{
 		bean.setAccountNum(createAccountNum());
 		bean.setMoney(money);
 		bean.setToday(findDate());
-		list.add(bean);
+		
 
 	}
 
@@ -53,18 +56,13 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public ArrayList<AccountBean> findAll() {
 		// TODO Auto-generated method stub
-		return list;
+		return null;
 	}
 
 	@Override
 	public AccountBean findByAccountNum(String accountNum) {
 		AccountBean bean = new AccountBean();
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getAccountNum().equals(accountNum)) {
 
-				bean = list.get(i);
-			}
-		}
 		return bean;
 
 	}
@@ -72,51 +70,31 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public int countAccount() {
 		// TODO Auto-generated method stub
-		return list.size();
+		return 0;
 	}
 
 	@Override
 	public boolean existAccountNum(String accountNum) {
 		boolean exist = false;
-		for (int i = 0; i < list.size(); i++) {
-			if (createAccountNum().equals(accountNum)) {
-				exist = true;
-			}
-		}
+
 		return exist;
 	}
 
 	@Override
 	public void depositMoney(String accountNum, int money) {
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getAccountNum().equals(accountNum)) {
-				list.get(i).setMoney(list.get(i).getMoney() + money);
 
-				break;
-			}
-
-		}
 	}
 
 	@Override
 	public void withdrawMoney(String accountNum, int money) {
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getAccountNum().equals(accountNum)) {
-				list.get(i).setMoney(list.get(i).getMoney()-money);
 
-				break;
-			}
-		}
 	}
 
 	@Override
 	public void deleteAccountNum(String accountNum) {
-		for(int i=0;i<list.size();i++) {
-		/*	if() {
-				
-			}*/
+
 			
-		}
+		
 		
 	}
 

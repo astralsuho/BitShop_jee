@@ -3,10 +3,13 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import domain.MemberBean;
+import factory.DatabaseFactory;
+import pool.Constant;
 
 public class MemberDAOImpl implements MemberDAO{
 	
@@ -19,28 +22,18 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberBean member) {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe",
-					"oracle", "password");
-			stmt = conn.createStatement();
-			
-			String sql = String.format(
+			DatabaseFactory
+			.createDatabase("oracle")
+			.getConnection()
+			.createStatement().executeUpdate(String.format(
 					"INSERT INTO member(id, name, pass, ssn) \n"
 					+ "VALUES('%s', '%s', '%s', '%s')",
 					member.getId(),member.getName(),
-					member.getPass(), member.getSsn());
-			System.out.println("SQL ::: "+sql);
-			// rs = stmt.executeQuery(sql);
-			if(stmt.executeUpdate(sql)==1) {
-				System.out.println("회원가입 성공 !!");
-			}else {
-				System.out.println("회원가입 실패 !!");
-			}
-		} catch (Exception e) {
+					member.getPass(), member.getSsn()));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		
+		}
 	}
 
 	@Override

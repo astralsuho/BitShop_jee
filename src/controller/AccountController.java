@@ -18,7 +18,7 @@ public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AccountService accountService = new AccountServiceImpl();
+		AccountService accountService = AccountServiceImpl.getInstance();
 		System.out.println("(1)계좌 서블릿으로 들어옴!!");
 		String cmd = request.getParameter("cmd");
 		cmd = (cmd == null) ? "move": cmd;

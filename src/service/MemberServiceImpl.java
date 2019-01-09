@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberBean findMemberById(String id) {
-		MemberBean member = new MesmberBean();
+		MemberBean member = new MemberBean();
 		member = dao.selectMemberById(id);
 		return member;
 	}
