@@ -33,7 +33,8 @@ public class AccountController extends HttpServlet {
 		String page = request.getParameter("page");
 		if(page == null) {page = "main";}
 		System.out.println("(4)page :"+page);
-		
+		String dest = request.getParameter("dest");
+		if(dest == null) {page = "NONE";}
 		switch(cmd) {
 		case "move":
 			System.out.println("액션이 이동");
@@ -46,6 +47,9 @@ public class AccountController extends HttpServlet {
 			AccountBean acc = accountService.findByAccountNum("");
 			request.setAttribute("acc", acc);
 			Command.move(request, response, dir, page);
+			break;
+		case "account-detail":
+			
 			break;
 		}
 	}

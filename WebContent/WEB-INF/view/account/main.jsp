@@ -20,10 +20,29 @@
 			</td>
 		</tr>
 		<tr style="height: 300px">
-			<td>
+			<td style="width:30%">
 				<%@ include file="side-menu.jsp" %>
 			</td>
-			<td></td>
+			<td>
+				<%
+			String dest = String.valueOf(request.getAttribute("dest"));
+			switch(dest){
+			case "NONE": case "account-detail":
+				%>
+				<%@ include file="account-detail.jsp" %>
+				<%
+				break;
+			case "open-form":
+				%>
+				<%@ include file="open-form.jsp" %>
+				<%
+				break;
+			case "":
+				
+				break;
+			}
+			%>
+			</td>
 		</tr>
 	</table>
 </body>
